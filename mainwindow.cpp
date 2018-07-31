@@ -666,11 +666,14 @@ void MainWindow::recvOrbitData(QList<QString> dataList)
 {
     qDebug()<<dataList;
     orbitNeedWritList.clear();
+    QString displayStr = "";
     for(int i=0; i<dataList.size();i++)
     {
         QString str = dataList[i]+"\r\n";
         orbitNeedWritList.append(str);
+        displayStr = displayStr + str ;
     }
+    ui->textEdit_orbit->setText(displayStr);
     qDebug()<<"orbit need write list:  "<<orbitNeedWritList;
 }
 void  MainWindow::createOrbitFile()
@@ -704,11 +707,14 @@ void MainWindow::recvXingLiData(QList<QString> dataList)
 {
     qDebug()<<dataList;
     xingLiNeedWritList.clear();
+    QString displayStr = "";
     for(int i=0; i<dataList.size();i++)
     {
         QString str = dataList[i]+"\r\n";
         xingLiNeedWritList.append(str);
+        displayStr = displayStr + str;
     }
+    ui->textEdit_xingLi->setText(displayStr);
     qDebug()<<"EPH need write list:  "<<xingLiNeedWritList;
 
 
@@ -722,12 +728,20 @@ void   MainWindow::createXingLiFile() //生产星历接口描述文件
      for(int i=0;i<xingLiNeedWritList.size();i++)
      {
          str1 = xingLiNeedWritList[i];
+         int widthMust = 6;
          if(str1.contains(key))
          {
              fileName = str1.replace("OBJECT_CATNUM","");
              fileName = fileName.replace("=","");
              fileName = fileName.trimmed();
 
+             if(fileName.length()< widthMust)
+             {
+                 for(int i=0;i<=(widthMust-fileName.length());i++)
+                 {
+                     fileName = "0"+fileName;
+                 }
+             }
              fileName = "./EPH_" + fileName + ".txt" ;
              qDebug()<<fileName;
              writeFile(xingLiNeedWritList,fileName);
@@ -770,11 +784,14 @@ void MainWindow::recvTTCData(QList<QString> dataList)
 {
     ttcDataNeedWritList.clear();
     qDebug()<<dataList;
+    QString displayStr = "" ;
     for(int i=0; i<dataList.size();i++)
     {
         QString str = dataList[i]+"\r\n";
         ttcDataNeedWritList.append(str);
+        displayStr = displayStr + str ;
     }
+    ui->textEdit_ttcData->setText(displayStr);
     qDebug()<<"EPH need write list:  "<<ttcDataNeedWritList;
 
 }

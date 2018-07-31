@@ -50,6 +50,93 @@ void DialogTTCData::on_pushButton_ok_clicked()
     str3 = "META_START";
     needWriteList.append(str3);
 
+    str1 = "OBJECT_NAME";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->OBJECT_NAME->text();
+    needWriteList.append(str3);
+
+    str1 = "OBJECT_ID";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->OBJECT_ID->text();
+    needWriteList.append(str3);
+
+    str1 = "OBJECT_CATNUM";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->OBJECT_CATNUM->text();
+    needWriteList.append(str3);
+
+    str1 = "TIME_SYSTEM";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->TIME_SYSTEM->text();
+    needWriteList.append(str3);
+
+    str1 = "OBS_START_TIME";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->OBS_START_TIME->text();
+    needWriteList.append(str3);
+
+    str1 = "OBS_END_TIME";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->OBS_END_TIME->text();
+    needWriteList.append(str3);
+
+    str1 = "SC_TRANS_FRE";
+    str2 = strTo_19_Width(str1);
+    str3 = str2 + strEqual + ui->SC_TRANS_FRE->text();
+    needWriteList.append(str3);
+
+    for(int i=0;i<ttcStationList.size();i++)
+    {
+        str1 = "TTC_FAC_ID";
+        str2 = strTo_19_Width(str1);
+        str3 = str2 + strEqual + ttcStationList[i].TTC_FAC_ID;
+        needWriteList.append(str3);
+
+        if( !ttcStationList[i].REC_REF_FRE.isEmpty() )
+        {
+            str1 = "REC_REF_FRE";
+            str2 = strTo_19_Width(str1);
+            str3 = str2 + strEqual + ttcStationList[i].REC_REF_FRE;
+            needWriteList.append(str3);
+        }
+
+
+        if( !ttcStationList[i].TTC_TRANS_FRE.isEmpty() )
+        {
+            str1 = "TTC_TRANS_FRE";
+            str2 = strTo_19_Width(str1);
+            str3 = str2 + strEqual + ttcStationList[i].TTC_TRANS_FRE;
+            needWriteList.append(str3);
+
+            str1 = "TURN_RATIO";
+            str2 = strTo_19_Width(str1);
+            str3 = str2 + strEqual + ttcStationList[i].TURN_RATIO;
+            needWriteList.append(str3);
+
+            str1 = "TRS_START_TIME";
+            str2 = strTo_19_Width(str1);
+            str3 = str2 + strEqual + ttcStationList[i].TRS_START_TIME;
+            needWriteList.append(str3);
+
+            str1 = "TRS_END_TIME";
+            str2 = strTo_19_Width(str1);
+            str3 = str2 + strEqual + ttcStationList[i].TRS_END_TIME;
+            needWriteList.append(str3);
+        }
+
+    }
+
+    str3 = "META_STOP";
+    needWriteList.append(str3);
+
+    str3 = "DATA_START";
+    needWriteList.append(str3);
+
+    ////增加数据处理部分，核心部分
+
+    str3 = "DATA_STOP";
+    needWriteList.append(str3);
+
     emit sendTTCData(needWriteList);
     this->close();
 }

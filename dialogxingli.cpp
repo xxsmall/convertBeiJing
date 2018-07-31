@@ -120,15 +120,15 @@ void DialogXingLi::on_pushButton_ok_clicked()
 
        str1 = xingLiDataList[i].speed_z;
        str2 = strTo_n_Width_right(str1,11);
-       str3 = str3 + str2 +str1Space;
+       str3 = str3 + str2 +str4Space;
 
        str1 = xingLiDataList[i].accelerat_x;
        str2 = strTo_n_Width_right(str1,15);
-       str3 = str3 + str2 +str1Space;
+       str3 = str3 + str2 +str4Space;
 
        str1 = xingLiDataList[i].accelerat_y;
        str2 = strTo_n_Width_right(str1,15);
-       str3 = str3 + str2 +str1Space;
+       str3 = str3 + str2 +str4Space;
 
        str1 = xingLiDataList[i].accelerat_z;
        str2 = strTo_n_Width_right(str1,15);

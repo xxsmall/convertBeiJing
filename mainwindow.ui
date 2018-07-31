@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1086</width>
-    <height>919</height>
+    <width>1386</width>
+    <height>1006</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>830</y>
+      <x>1190</x>
+      <y>910</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -31,9 +31,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>30</y>
       <width>131</width>
-      <height>251</height>
+      <height>191</height>
      </rect>
     </property>
    </widget>
@@ -41,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>40</y>
+      <y>30</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>80</y>
+      <y>70</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -61,7 +61,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>120</y>
+      <y>110</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -71,7 +71,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>160</y>
+      <y>150</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -81,7 +81,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>40</y>
+      <y>30</y>
       <width>54</width>
       <height>21</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>80</y>
+      <y>70</y>
       <width>54</width>
       <height>21</height>
      </rect>
@@ -113,7 +113,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>120</y>
+      <y>110</y>
       <width>54</width>
       <height>21</height>
      </rect>
@@ -132,7 +132,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>160</y>
+      <y>150</y>
       <width>54</width>
       <height>21</height>
      </rect>
@@ -150,8 +150,8 @@
    <widget class="QPushButton" name="pushButton_SFix">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>260</y>
+      <x>400</x>
+      <y>30</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -163,8 +163,8 @@
    <widget class="QPushButton" name="pushButton_SSave">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>260</y>
+      <x>400</x>
+      <y>70</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -176,8 +176,8 @@
    <widget class="QPushButton" name="pushButton_SNew">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>260</y>
+      <x>400</x>
+      <y>110</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -189,18 +189,18 @@
    <widget class="QTableView" name="tableView_qiXiang">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>340</y>
+      <x>850</x>
+      <y>40</y>
       <width>391</width>
-      <height>191</height>
+      <height>151</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_qiXiang_new">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>540</y>
+      <x>850</x>
+      <y>200</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -212,8 +212,8 @@
    <widget class="QPushButton" name="pushButton_qiXiang_save">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>540</y>
+      <x>960</x>
+      <y>200</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -222,21 +222,11 @@
      <string>确认修改</string>
     </property>
    </widget>
-   <widget class="QTreeView" name="treeView_orbit">
-    <property name="geometry">
-     <rect>
-      <x>495</x>
-      <y>40</y>
-      <width>571</width>
-      <height>211</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_orbit_save">
     <property name="geometry">
      <rect>
-      <x>990</x>
-      <y>260</y>
+      <x>1310</x>
+      <y>430</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -245,21 +235,11 @@
      <string>编辑数据</string>
     </property>
    </widget>
-   <widget class="QTreeView" name="treeView_xingLi">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>340</y>
-      <width>571</width>
-      <height>191</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>310</y>
+      <x>760</x>
+      <y>10</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -278,7 +258,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -296,8 +276,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>10</y>
+      <x>10</x>
+      <y>230</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -315,8 +295,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>310</y>
+      <x>10</x>
+      <y>450</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -334,8 +314,8 @@
    <widget class="QPushButton" name="pushButton_xiLi_save">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>540</y>
+      <x>1280</x>
+      <y>660</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -344,47 +324,11 @@
      <string>编辑星历数据</string>
     </property>
    </widget>
-   <widget class="QTreeView" name="treeView_TTC_file">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>630</y>
-      <width>1051</width>
-      <height>151</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_TTC_addFile">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>790</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导入数据文件</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_TTC_delFile">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>790</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>删除数据文件</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>600</y>
+      <y>680</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -403,7 +347,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>200</y>
+      <y>190</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -413,7 +357,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>210</y>
+      <y>200</y>
       <width>54</width>
       <height>21</height>
      </rect>
@@ -434,9 +378,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>840</y>
-      <width>851</width>
+      <x>10</x>
+      <y>920</y>
+      <width>1181</width>
       <height>21</height>
      </rect>
     </property>
@@ -445,7 +389,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>80</y>
+      <y>70</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -455,7 +399,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>120</y>
+      <y>110</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -465,7 +409,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>160</y>
+      <y>150</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -474,8 +418,8 @@
    <widget class="QPushButton" name="pushButton_qiXiang_del">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>540</y>
+      <x>1040</x>
+      <y>200</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -487,8 +431,8 @@
    <widget class="QPushButton" name="pushButton_qiXiang_refresh">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>540</y>
+      <x>1160</x>
+      <y>200</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -500,8 +444,8 @@
    <widget class="QPushButton" name="pushButton_TTC_EditData">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>790</y>
+      <x>1280</x>
+      <y>870</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -510,13 +454,58 @@
      <string>编辑测量数据</string>
     </property>
    </widget>
+   <widget class="QTextEdit" name="textEdit_orbit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>260</y>
+      <width>1371</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_xingLi">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>480</y>
+      <width>1371</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_ttcData">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>710</y>
+      <width>1371</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1086</width>
+     <width>1386</width>
      <height>23</height>
     </rect>
    </property>
