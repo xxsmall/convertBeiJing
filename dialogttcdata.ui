@@ -300,9 +300,9 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>561</y>
-     <width>421</width>
-     <height>231</height>
+     <y>691</y>
+     <width>1001</width>
+     <height>101</height>
     </rect>
    </property>
   </widget>
@@ -782,8 +782,8 @@
   <widget class="QPushButton" name="pushButton_addFile">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>570</y>
+     <x>720</x>
+     <y>580</y>
      <width>111</width>
      <height>23</height>
     </rect>
@@ -795,8 +795,8 @@
   <widget class="QPushButton" name="pushButton_delFile">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>600</y>
+     <x>720</x>
+     <y>610</y>
      <width>111</width>
      <height>23</height>
     </rect>
@@ -965,14 +965,105 @@
   <widget class="QLabel" name="label_30">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>220</y>
-     <width>151</width>
+     <x>850</x>
+     <y>550</y>
+     <width>221</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>使用此发射频率的结束时间</string>
+    <string>新增测量数据文件及其路径</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_newFilePath">
+   <property name="geometry">
+    <rect>
+     <x>850</x>
+     <y>580</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ttc data file name and path</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_newStationID">
+   <property name="geometry">
+    <rect>
+     <x>1220</x>
+     <y>580</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>1001</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_31">
+   <property name="geometry">
+    <rect>
+     <x>1220</x>
+     <y>550</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>测站编码</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_analyseFile">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>640</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>分析文件列表</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_selectFile">
+   <property name="geometry">
+    <rect>
+     <x>1080</x>
+     <y>580</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_32">
+   <property name="geometry">
+    <rect>
+     <x>1150</x>
+     <y>550</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>卫星编码</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_newSatNum">
+   <property name="geometry">
+    <rect>
+     <x>1150</x>
+     <y>580</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>390001</string>
    </property>
   </widget>
  </widget>

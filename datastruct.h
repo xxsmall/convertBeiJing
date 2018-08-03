@@ -11,7 +11,7 @@ public:
 };
 
 
-class XingLiDesc
+class XingLiDesc    //星历编辑表格用的类
 {
 public:
     QString time;
@@ -30,7 +30,7 @@ public:
 };
 
 
-class ttcStationDesc
+class ttcStationDesc   //测量数据中测站编辑表格用的类
 {
   public:
     QString TTC_FAC_ID;
@@ -40,4 +40,23 @@ class ttcStationDesc
     QString TRS_START_TIME;
     QString TRS_END_TIME;
 };
+
+class ttcDataFileDesc      //测量数据文件编辑表格用的类
+{
+public:
+    QString fileName;
+    QString stationID;
+    QString satNum;
+
+};
+
+typedef struct
+{
+    int years;         /*!< Years. All values are valid */
+    int months;        /*!< Months. Valid values : 1 (January) - 12 (December ) */
+    int days;         /*!< Days. Valid values 1 - 28,29,30,31 Depends on month .*/
+    int hours;         /*!< Hours. Valid values 0 - 23. */
+    int minutes;      /*!< Minutes. Valid values 0 - 59. */
+    double seconds;    /*!< Seconds. Valid values 0 - 59.99999.... */
+}ln_date;
 #endif // DATASTRUCT_H

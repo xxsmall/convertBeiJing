@@ -13,6 +13,11 @@ DialogTTCData::DialogTTCData(QWidget *parent) :
     stationSelectedRow = -1;
     ttcStationList.clear();
 
+    modelFile = new QStandardItemModel();
+    ui->tableView_fileList->setModel(modelFile);
+    setFileTableHeader();
+    fileSelectedRow = -1;
+    ttcFileList.clear();
 }
 
 DialogTTCData::~DialogTTCData()
@@ -344,4 +349,336 @@ QString  DialogTTCData::strTo_19_Width(QString strConvert)
         return str1;
     }
 
+}
+
+void  DialogTTCData::setFileTableHeader() //设置file表格的表格头部文字
+{
+    QStringList list ;
+    list.append("文件名称");
+    list.append("测站编码");
+    list.append("卫星编码");
+
+
+    modelFile->setHorizontalHeaderLabels(list);
+    ui->tableView_fileList->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+//    ui->tableView_station->setColumnWidth(0,100);
+//    ui->tableView_station->setColumnWidth(1,115);
+//    ui->tableView_station->setColumnWidth(2,100);
+
+}
+
+void DialogTTCData::on_pushButton_selectFile_clicked()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this,"open file dialog","","");
+
+    if(!fileName.isEmpty())
+    {
+        ui->lineEdit_newFilePath->setText(fileName);
+    }
+}
+
+void DialogTTCData::on_pushButton_addFile_clicked()
+{
+    ttcDataFileDesc  tempObj;
+    QString fileName = ui->lineEdit_newFilePath->text();
+    QString id = ui->lineEdit_newStationID->text();
+    QString num = ui->lineEdit_newSatNum->text();
+    if(!fileName.isEmpty() && !id.isEmpty())
+    {
+        tempObj.fileName = fileName;
+        tempObj.stationID = id ;
+        tempObj.satNum = num;
+        ttcFileList.append(tempObj);
+        updateFileTableData();
+    }else
+    {
+        QMessageBox::information(this,"warning","file name or id is empty,give up add");
+    }
+}
+
+void  DialogTTCData::updateFileTableData()
+{
+    modelFile->clear();
+    setFileTableHeader();
+    fileSelectedRow = -1;
+    int size = ttcFileList.size();
+    for(int i=0;i<size;i++)
+    {
+        int j=0;
+        QString str = ttcFileList[i].fileName;
+        QStandardItem*  tempItem0 = new QStandardItem(str);
+        tempItem0->setBackground(QColor(192,192,192));
+        modelFile->setItem(i,j,tempItem0);
+
+        j=j+1;
+        str = ttcFileList[i].stationID;
+        QStandardItem*  tempItem1 = new QStandardItem(str);
+        tempItem1->setBackground(QColor(192,192,192));
+        modelFile->setItem(i,j,tempItem1);
+
+        j=j+1;
+        str = ttcFileList[i].satNum;
+        QStandardItem*  tempItem2 = new QStandardItem(str);
+        tempItem2->setBackground(QColor(192,192,192));
+        modelFile->setItem(i,j,tempItem2);
+    }
+
+}
+
+
+
+void DialogTTCData::on_tableView_fileList_clicked(const QModelIndex &index)
+{
+    fileSelectedRow = index.row();
+}
+
+void DialogTTCData::on_pushButton_delFile_clicked()
+{
+    if(fileSelectedRow>=0 && fileSelectedRow<ttcFileList.size())
+    {
+        ttcFileList.removeAt(fileSelectedRow);
+        updateFileTableData();
+    }
+}
+
+
+QList<QString>   DialogTTCData::anlyseAllTTCFile()
+{
+    int size = ttcFileList.size();
+    QList<QString> needWriteList;
+    needWriteList.clear();
+
+    for(int i=0;i<size;i++)
+    {
+        QString fileName = ttcFileList[i].fileName;
+        QString id = ttcFileList[i].stationID;
+        QString num = ttcFileList[i].satNum;
+        QList<QString> thisFileList;
+        thisFileList.clear();
+        thisFileList = getEffectLineList(fileName);
+        QList<QString> singleFileData;
+        singleFileData.clear();
+
+        singleFileData =  creatData(thisFileList,id,num);
+        int sizeData = singleFileData.size();
+        for(int j=0;j<sizeData;j++)
+        {
+            needWriteList.append(singleFileData[j]);
+
+        }
+
+    }
+    return needWriteList;
+
+}
+
+QString  DialogTTCData::removeMoreSpace(QString str) //将每行连续的空格变为单个空格
+{
+    int size = str.length();
+    QChar  a;
+    QString strOut="";
+    bool pastIsSpace=false;
+    bool nowIsSpace=false;
+    for(int i=0 ;i<size;i++)
+    {
+
+        a=str[i];
+        if(a==' ')
+        {
+            nowIsSpace = true;
+        }else
+        {
+            nowIsSpace = false;
+        }
+
+        if(nowIsSpace && pastIsSpace)
+        {
+
+        }else
+        {
+           strOut=strOut + a;
+        }
+
+        pastIsSpace = nowIsSpace ;
+    }
+    qDebug()<<strOut;
+    return strOut;
+
+}
+
+QList<QString>  DialogTTCData::readFile(QString fileName)
+{
+    QFile file(fileName);
+    QList<QString> dataList;
+    dataList.clear();
+
+    if(!file.open(QIODevice::ReadOnly))
+    {
+         return dataList;
+    }
+    QTextStream in(&file);
+
+    int i=0;
+    while(!in.atEnd())
+    {
+        QString onecount = in.readLine();
+        i=i+1;
+        dataList.append(onecount);
+        //qDebug() << i <<"  "<< onecount;
+    }
+    file.close();
+    return dataList;
+
+}
+
+QList<QString>  DialogTTCData::getEffectLineList(QString selectFile)
+{
+    QList<QString> resaultList;
+    QList<QString> effectDataList;
+    effectDataList.clear();
+
+    resaultList =  readFile(selectFile);
+    if(resaultList.size()>0)
+    {
+        for(int i=0;i<resaultList.size();i++)
+        {
+            QString strTemp = resaultList[i].trimmed();
+            if(!strTemp.isEmpty()&& !strTemp.contains("------") && !strTemp.contains("Azimuth"))
+            {
+                if(strTemp.size() > 70)//测试文件每行97个字符
+                {
+                    qDebug()<<strTemp;
+                    effectDataList.append(strTemp);
+                }
+            }
+
+
+        }
+    }
+
+    return  effectDataList;
+
+}
+
+QList<QString>  DialogTTCData::creatData(QList<QString> dataList,QString stationNum,QString sateNum)//单个数据文件产生的数据集合
+{
+
+    QList<QString> reasultList;
+    reasultList.clear();
+
+    QString startTimeStr;
+    QString endTimeStr;
+
+
+    if(dataList.size() > 0)
+    {
+        for(int i=0;i<dataList.size();i++)
+        //for(int i=0;i<1;i++)  //test use
+        {
+            QString strLine = dataList[i] ;
+            strLine = removeMoreSpace(strLine);
+            QStringList ttcDataList;
+            ttcDataList.clear();
+            ttcDataList = strLine.split(" ");
+            //qDebug()<<ttcDataList.size();
+            if(ttcDataList.size()>=8)
+            {
+                // "19 06 2018 07:24:15.560 62.176 0.000 2664.335687 -1.548055"
+                //  0   1  2     3           4      5       6           7
+                //   date        time        A      E       R          V
+                float tE=0;
+                QString str_tE=ttcDataList.at(5);
+                tE = str_tE.toFloat();
+
+                QString yearStr = ttcDataList.at(2);
+                int year = yearStr.toInt();
+
+                QString monthStr = ttcDataList.at(1);
+                int     month = monthStr.toInt();
+
+                QString dayStr = ttcDataList.at(0);
+                int     day = dayStr.toInt();
+
+                QDate dateTemp;
+                dateTemp.setDate(year,month,day);
+
+                qint64 JDdata = dateTemp.toJulianDay();
+
+                dateTemp.setDate(1950,1,1);
+                qint64 JD1950 = dateTemp.toJulianDay();
+
+                qint64 MJD= JDdata - JD1950 ;
+                qDebug()<<"简约儒略日："<<MJD<<JDdata<<JD1950;
+
+
+//                QString timeStr;
+//                timeStr = formatTime(ttcDataList);
+//                //QDate dateObj()
+
+
+//                QString cejuLine;
+//                QString stk_ceju;
+//                stk_ceju = ttcDataList.at(6);
+//                cejuLine = makeCeJu(timeStr,stationNum,sateNum,stk_ceju);
+
+//                QString cesuLine;
+//                QString stk_cesu;
+//                stk_cesu = ttcDataList.at(7);
+//                cesuLine = makeCeSu(timeStr,stationNum,sateNum,stk_cesu);
+
+//                QString strA;
+//                QString strE;
+//                QString cejiaoLine;
+//                strA = ttcDataList.at(4);
+//                strE = ttcDataList.at(5);
+//                cejiaoLine = makeCeJiao(timeStr,stationNum,sateNum,strA,strE);
+
+//                if(tE >= 5)
+//                {
+//                    reasultList.append(cejuLine);
+
+//                    reasultList.append(cesuLine);
+
+//                    reasultList.append(cejiaoLine);
+
+
+//                }
+
+            }
+
+        }
+    }
+
+    return reasultList;
+}
+
+void DialogTTCData::on_pushButton_analyseFile_clicked()
+{
+    anlyseAllTTCFile();
+}
+
+double DialogTTCData::jde(int Y,int M,int D,int hour,int min,float sec)
+{
+    long int f,g,mid1,mid2;
+    double J,JDE,A;
+
+    if(M>=3)
+    {
+        f=Y;
+        g=M;
+    }
+
+    if(M==1||M==2)
+    {
+        f=Y-1;
+        g=M=12;
+    }
+
+    mid1=floor(365.25*f);
+    mid2=floor(30.6001*(g+1));
+    A=2-floor(f/100.0)+floor(f/400.0);
+    J=mid1+mid2+D+A+1720994.5;
+    JDE=J+hour/24.0+min/1440.0+sec/86400.0;
+    return JDE;
 }
